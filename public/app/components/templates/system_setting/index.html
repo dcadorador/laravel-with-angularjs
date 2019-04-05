@@ -1,0 +1,78 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                System
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="#" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            Settings
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+<br>
+
+
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+
+        <div class="m-portlet">
+            <!--begin::Form-->
+            <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator">
+                <div class="m-portlet__body">
+                    <div class="form-group m-form__group row" ng-repeat="obj in pagination.objects">
+                        <label class="col-lg-4 col-form-label">
+                            {{ obj.meta_key }}
+                        </label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control m-input" ng-model="obj.meta_value">
+                            <span class="m-form__help">
+                                Please enter {{ obj.meta_key }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+                    <div class="m-form__actions m-form__actions--solid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="pull-right">
+                                    <a class="btn btn-info" ng-href="https://systems.theonlinedogtrainer.com/infusionsoft/oauth/reauth">
+                                        Re-auth
+                                    </a>
+                                    <button type="button" class="btn btn-success" ng-click="submit()">
+                                        Submit
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" ng-click="reset()">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+
+    </div>
+</div>
+
+  

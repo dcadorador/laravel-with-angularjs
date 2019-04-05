@@ -1,0 +1,105 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">
+        Add Product
+    </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+        <span aria-hidden="true">
+            &times;
+        </span>
+    </button>
+</div>
+<div class="modal-body" style="min-height: 200px;">
+
+    <div class="alert alert-danger" ng-if="errors.length > 0">
+        <ul>
+            <li ng-repeat="(key, value) in errors"><% value %></li>
+        </ul>
+    </div>
+
+    <div class="alert alert-warning">
+        <p>System: Use numbers only for all tags field.</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.name">
+                </div>
+
+                <div class="form-group">
+                    <label>Domain</label>
+                    <select id="single" ng-model="product.domain_id" select-picker obj="domains" class="form-control select2">
+                        <option ng-repeat="domain in domains" ng-value="domain.id"><% domain.url %></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>ClickBank SKU</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.cbsku">
+                </div>
+
+                <div class="form-group">
+                    <label>INFS Product ID</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.infs_prod_id">
+                </div>
+
+                <div class="form-group">
+                    <label>INFS Sub Plan ID</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.infs_sub_id">
+                </div>
+                
+                <div class="form-group">
+                    <label>Memberium Tags</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.memberium">
+                </div>
+
+                <div class="form-group">
+                    <label>Sub Active Tag</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.sub_ac_tag">
+                </div>
+                
+                <div class="form-group">
+                    <label>Sub Inactive Tag</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.sub_in_tag">
+                </div>
+
+                <div class="form-group">
+                    <label>Event Inactive Tag</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.evnt_in_tag">
+                </div>
+                
+                <div class="form-group">
+                    <label>Event Sale Tag</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.evnt_sale_tag">
+                </div>
+
+                <div class="form-group">
+                    <label>Event Refund Tag</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.evnt_rfnd_tag">
+                </div>
+                
+                <div class="form-group">
+                    <label>Event Charge Back Tag</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.evnt_charge_tag">
+                </div>
+
+                <div class="form-group">
+                    <label>Abandoned Order Tag</label>
+                    <input type="text" required class="form-control" autofocus ng-model="product.abandoned_order_tag">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" ng-click="cancel()" ng-if="isLoaded">
+        Close
+    </button>
+    <button type="button" class="btn btn-primary" ng-if="isLoaded" ng-click="submit()">
+        Save
+    </button>
+</div>

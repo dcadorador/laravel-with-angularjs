@@ -1,0 +1,166 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                Dashboard
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="#" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            Reports
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
+                <input type="hidden" id="report_date_range">
+                <span class="m-subheader__daterange-label">
+                    <span class="m-subheader__daterange-title"></span>
+                    <span class="m-subheader__daterange-date m--font-brand"></span>
+                </span>
+                <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+                    <i class="la la-angle-down"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+<br>
+
+<div class="m-portlet">
+    <div class="m-portlet__body m-portlet__body--no-padding">
+        <div class="row m-row--no-padding m-row--col-separator-xl">
+            <div class="col-md-12 col-lg-12 col-xl-4">
+                <!--begin:: Widgets/Stats2-1 -->
+                <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">
+                                    Total Orders
+                                </h3>
+                            </div>
+                            <div class="col m--align-right">
+                                <span class="m-widget1__number m--font-brand">
+                                    $ <% obj.total_order_amt_dis %> (<% obj.total_order%>)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">
+                                    Total Refund
+                                </h3>
+                            </div>
+                            <div class="col m--align-right">
+                                <span class="m-widget1__number m--font-danger">
+                                    $ <% obj.total_refund_amt_dis %> (<% obj.total_refund %>)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">
+                                    Net Total
+                                </h3>
+                            </div>
+                            <div class="col m--align-right">
+                                <span class="m-widget1__number m--font-success">
+                                    $ <% obj.net_total %> (<% obj.total_order_count %>)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end:: Widgets/Stats2-1 -->
+            </div>
+            <div class="col-md-12 col-lg-12 col-xl-4">
+                <!--begin:: Widgets/Stats2-2 -->
+                <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">
+                                    Total Orders - GA
+                                </h3>
+                            </div>
+                            <div class="col m--align-right">
+                                <span class="m-widget1__number m--font-accent">
+                                    $ <% obj.total_order_ga_amt_dis %> (<% obj.total_order_ga %>)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">
+                                    Total Refund - GA
+                                </h3>
+                            </div>
+                            <div class="col m--align-right">
+                                <span class="m-widget1__number m--font-info">
+                                    $ <% obj.total_refund_ga_amt_dis %> (<% obj.total_refund_ga %>)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">
+                                    Net Total - GA
+                                </h3>
+                            </div>
+                            <div class="col m--align-right">
+                                <span class="m-widget1__number m--font-warning">
+                                    $ <% obj.net_total_ga %> (<% obj.total_ga_count %>)
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--begin:: Widgets/Stats2-2 -->
+            </div>
+            <div class="col-md-12 col-lg-12 col-xl-4">
+                <!--begin:: Widgets/Stats2-3 -->
+                <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">
+                                    Total Orders - FB
+                                </h3>
+                            </div>
+                            <div class="col m--align-right">
+                                <span class="m-widget1__number m--font-success">
+                                    $ <% obj.total_order_fb_amt_dis %> (<% obj.total_order_fb %>)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--begin:: Widgets/Stats2-3 -->
+            </div>
+        </div>
+    </div>
+</div>

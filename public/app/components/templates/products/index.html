@@ -1,0 +1,520 @@
+<!-- BEGIN: Subheader --> 
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                Products
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="#" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            List
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="">
+                <a href="#" ng-click="add()" class="btn btn-md btn-brand m-btn m-btn--icon">
+                    <i class="la la-plus"></i> Add New
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+<br>
+
+<div class="m-portlet">
+    <div class="m-portlet__body">
+
+        <div class="row stacked">
+            <div class="col-md-4">
+                <div class="">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for..."  ng-model="pagination.search">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary btn-condensed" type="button" ng-click="doSearch()">
+                                    <i class="fa fa-search"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <!-- <button class="btn btn-default active"><span class="fa fa-search"></span> Search</button>
+                    <button class="btn btn-default"><span class="fa fa-image"></span> Images</button>
+                    <button class="btn btn-default"><span class="fa fa-map-marker"></span> Maps</button>
+                    <button class="btn btn-default"><span class="fa fa-camera"></span> Video</button> -->
+                    View 
+                    <div class="btn-group">
+                        
+                        <select class="form-control" ng-model="pagination.itemsPerPage" select-picker ng-change="setItemsPerPage(pagination.itemsPerPage)">
+                            <option ng-value="10">10</option>
+                            <option ng-value="20">20</option>
+                            <option ng-value="50">50</option>
+                            <option ng-value="100">100</option>
+                        </select>
+                        
+                    </div>
+                    records | Total Found <% pagination.totalItems %> records
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        
+        <div class="table-responsive">
+            <div class="zui-wrapper">
+                <div class="zui-scroller">
+                    <table class="table table-bordered table-striped table-condensed zui-table">
+
+                        <thead>
+                            <tr>
+                                <th class="zui-sticky-col">Actions</th>
+                                <th style="vertical-align: text-top">ID</th>
+                                <th style="width: 40px;vertical-align: text-top" >Domain</th>
+                                <th style="width: 20%;vertical-align: text-top;">Product Name</th>
+                                <th style="width: 5%;vertical-align: text-top">ClickBank SKU</th>
+                                <th style="width: 5%;vertical-align: text-top">INFS Product ID</th>
+                                <th style="width: 5%;vertical-align: text-top">INFS Sub Plan ID</th>
+                                <th style="width: 5%;vertical-align: text-top">Memberium Tags</th>
+                                <th style="width: 5%;vertical-align: text-top">Sub Active Tag</th>
+                                <th style="width: 5%;vertical-align: text-top">Sub Inactive Tag</th>
+                                <th style="width: 5%;vertical-align: text-top">Event Inactive Tag</th>
+                                <th style="width: 5%;vertical-align: text-top">Event Sale Tag</th>
+                                <th style="width: 5%; vertical-align: text-top">Event Refund Tag</th>
+                                <th style="width: 5%; vertical-align: text-top">Event Charge Back Tag</th>
+                                <th style="width: 5%; vertical-align: text-top">Abandoned Order Tag</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="pagination.objects.length <= 0 && isLoaded">
+                                <td colspan="14" align="center">No Results Found.</td>
+                            </tr>
+                        
+                            <tr ng-if="pagination.objects.length > 0 && isLoaded" ng-repeat="obj in pagination.objects">
+                                <td class="zui-sticky-col">
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <button type="button" class="m-btn btn btn-secondary" ng-click="edit(obj)">
+                                            <i class="flaticon-list-3"></i>
+                                        </button>
+                                        <button type="button" class="m-btn btn btn-secondary" ng-click="destroy(obj)">
+                                            <i class="flaticon-delete-1"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td><% obj.id %></td>
+                                <td><% obj.domain.url %></td>
+                                <td><% obj.product_name %></td>
+                                <td><% obj.cb_sku %></td>
+                                <td><% obj.infs_product_id %></td>
+                                <td><% obj.infs_subplan_id %></td>
+                                <td><% obj.memberium_tags %></td>
+                                <td><% obj.sub_active_tag %></td>
+                                <td><% obj.sub_inactive_tag %></td>
+                                <td><% obj.event_inactive_tag %></td>
+                                <td><% obj.event_sale_tag %></td>
+                                <td><% obj.event_refund_tag %></td>
+                                <td><% obj.event_chargeback_tag %></td>
+                                <td><% obj.abandoned_order_tag %></td>
+                            </tr>
+                        
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div style="position: relative; height: 30px; margin-bottom: 30px;">
+                    <div style="position: absolute; left: 50%; top: 50%; bottom: 50%; transform: translate(-50%, -50%);">
+                        <ul uib-pagination ng-change="pageChanged()" total-items="pagination.totalItems" ng-model="pagination.currentPage" max-size="pagination.maxSize" items-per-page="pagination.itemsPerPage" boundary-links="true" force-ellipses="true"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <form method="POST" action="{{url('products')}}" id="addProd"/>
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">New Product Setting</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small">Fill up the form to create a new product setting.</p>
+                    <br/>
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="name" type="text" required placeholder="{{ __('Product Name') }}*" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" autofocus>
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                             <select id="domain" class="form-control" name="domain" required>
+                                  @foreach($domains as $domain)
+                                      <option value="{{ $domain->id }}">{{ $domain->url }}</option>
+                                  @endforeach
+                             </select>
+
+                             @if ($errors->has('role'))
+                                  <span class="help-block">
+                                        <strong>{{ $errors->first('domain') }}</strong>
+                                  </span>
+                             @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="cbsku" required placeholder="{{ __('ClickBank SKU') }}*" type="text" class="form-control{{ $errors->has('cbsku') ? ' is-invalid' : '' }}" name="cbsku" autofocus>
+
+                            @if ($errors->has('cbsku'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('cbsku') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="infs_prod_id" placeholder="{{ __('Infusionsoft Product ID') }}" type="text" class="form-control{{ $errors->has('infs_prod_id') ? ' is-invalid' : '' }}" name="infs_prod_id" autofocus>
+
+                            @if ($errors->has('infs_prod_id'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('infs_prod_id') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="infs_sub_id" placeholder="{{ __('Infusionsoft Sub-plan ID') }}" type="text" class="form-control{{ $errors->has('infs_sub_id') ? ' is-invalid' : '' }}" name="infs_sub_id" autofocus>
+
+                            @if ($errors->has('infs_sub_id'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('infs_sub_id') }}</strong>
+                                </span>
+                            @endif
+                         </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="memberium" placeholder="{{ __('Memberium Tags') }}" type="text" class="form-control{{ $errors->has('memberium') ? ' is-invalid' : '' }}" name="memberium" autofocus>
+
+                            @if ($errors->has('memberium'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('memberium') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                     </div>
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="sub_ac_tag" placeholder="{{ __('Sub Active Tag') }}" type="text" class="form-control{{ $errors->has('sub_ac_tag') ? ' is-invalid' : '' }}" name="sub_ac_tag" autofocus>
+
+                            @if ($errors->has('sub_ac_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('sub_ac_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="sub_in_tag" placeholder="{{ __('Sub Inactive Tag') }}" type="text" class="form-control{{ $errors->has('sub_in_tag') ? ' is-invalid' : '' }}" name="sub_in_tag" autofocus>
+
+                            @if ($errors->has('sub_in_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('sub_in_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="evnt_in_tag" placeholder="{{ __('Event Inactive Tag') }}" type="text" class="form-control{{ $errors->has('evnt_in_tag') ? ' is-invalid' : '' }}" name="evnt_in_tag" autofocus>
+
+                            @if ($errors->has('evnt_in_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_in_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="evnt_sale_tag" placeholder="{{ __('Event Sale Tag') }}" type="text" class="form-control{{ $errors->has('evnt_sale_tag') ? ' is-invalid' : '' }}" name="evnt_sale_tag" autofocus>
+
+                            @if ($errors->has('evnt_sale_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_sale_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="evnt_rfnd_tag" placeholder="{{ __('Event Refund Tag') }}" type="text" class="form-control{{ $errors->has('evnt_rfnd_tag') ? ' is-invalid' : '' }}" name="evnt_rfnd_tag" autofocus>
+
+                            @if ($errors->has('evnt_rfnd_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_rfnd_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input id="evnt_charge_tag" placeholder="{{ __('Event Charge Back Tag') }}" type="text" class="form-control{{ $errors->has('evnt_charge_tag') ? ' is-invalid' : '' }}" name="evnt_charge_tag" autofocus>
+
+                            @if ($errors->has('evnt_charge_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_charge_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>  -->
+<!-- add prod modal -->
+<!-- 
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <form method="POST" action="{{url('products/edit')}}" id="editProd"/>
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Edit Product Setting</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <br/>
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                        <label class="form-label">{{ __('Product Name') }}*</label>
+                            <input id="edit_name" type="text" required placeholder="{{ __('Product Name') }}*" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" autofocus>
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                             <label class="form-label">{{ __('Domain') }}*</label>
+                             <select id="edit_domain" class="form-control" name="domain" required>
+                                  @foreach($domains as $domain)
+                                      <option value="{{ $domain->id }}">{{ $domain->url }}</option>
+                                  @endforeach
+                             </select>
+
+                             @if ($errors->has('role'))
+                                  <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                  </span>
+                             @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                        <label class="form-label">{{ __('ClickBank SKU') }}*</label>
+                            <input id="edit_cbsku" required placeholder="{{ __('ClickBank SKU') }}*" type="text" class="form-control{{ $errors->has('cbsku') ? ' is-invalid' : '' }}" name="cbsku" autofocus>
+
+                            @if ($errors->has('cbsku'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('cbsku') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                        <label class="form-label">{{ __('Infusionsoft Product ID') }}*</label>
+                            <input id="edit_infs_prod_id" placeholder="{{ __('Infusionsoft Product ID') }}" type="text" class="form-control{{ $errors->has('infs_prod_id') ? ' is-invalid' : '' }}" name="infs_prod_id" autofocus>
+
+                            @if ($errors->has('infs_prod_id'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('infs_prod_id') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <label class="form-label">{{ __('Infusionsoft Sub-plan ID') }}</label>
+                            <input id="edit_infs_sub_id" placeholder="{{ __('Infusionsoft Sub-plan ID') }}" type="text" class="form-control{{ $errors->has('infs_sub_id') ? ' is-invalid' : '' }}" name="infs_sub_id" autofocus>
+
+                            @if ($errors->has('infs_sub_id'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('infs_sub_id') }}</strong>
+                                </span>
+                            @endif
+                         </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                        <label class="form-label">{{ __('Memberium Tags') }}</label>
+                            <input id="edit_memberium" placeholder="{{ __('Memberium Tags') }}" type="text" class="form-control{{ $errors->has('memberium') ? ' is-invalid' : '' }}" name="memberium" autofocus>
+
+                            @if ($errors->has('memberium'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('memberium') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                     </div>
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                             <label class="form-label">{{ __('Sub Active Tag') }}</label>
+                            <input id="edit_sub_ac_tag" placeholder="{{ __('Sub Active Tag') }}" type="text" class="form-control{{ $errors->has('sub_ac_tag') ? ' is-invalid' : '' }}" name="sub_ac_tag" autofocus>
+
+                            @if ($errors->has('sub_ac_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('sub_ac_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                        <label class="form-label">{{ __('Sub Inactive Tag') }}</label>
+                            <input id="edit_sub_in_tag" placeholder="{{ __('Sub Inactive Tag') }}" type="text" class="form-control{{ $errors->has('sub_in_tag') ? ' is-invalid' : '' }}" name="sub_in_tag" autofocus>
+
+                            @if ($errors->has('sub_in_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('sub_in_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <label class="form-label">{{ __('Event Inactive Tag') }}</label>
+                            <input id="edit_evnt_in_tag" placeholder="{{ __('Event Inactive Tag') }}" type="text" class="form-control{{ $errors->has('evnt_in_tag') ? ' is-invalid' : '' }}" name="evnt_in_tag" autofocus>
+
+                            @if ($errors->has('evnt_in_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_in_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <label class="form-label">{{ __('Event Sale Tag') }}</label>
+                            <input id="edit_evnt_sale_tag" placeholder="{{ __('Event Sale Tag') }}" type="text" class="form-control{{ $errors->has('evnt_sale_tag') ? ' is-invalid' : '' }}" name="evnt_sale_tag" autofocus>
+
+                            @if ($errors->has('evnt_sale_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_sale_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                        <label class="form-label">{{ __('Event Refund Tag') }}</label>
+                            <input id="edit_evnt_rfnd_tag" placeholder="{{ __('Event Refund Tag') }}" type="text" class="form-control{{ $errors->has('evnt_rfnd_tag') ? ' is-invalid' : '' }}" name="evnt_rfnd_tag" autofocus>
+
+                            @if ($errors->has('evnt_rfnd_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_rfnd_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <label class="form-label">{{ __('Event Charge Back Tag') }}</label>
+                            <input id="edit_evnt_charge_tag" placeholder="{{ __('Event Charge Back Tag') }}" type="text" class="form-control{{ $errors->has('evnt_charge_tag') ? ' is-invalid' : '' }}" name="evnt_charge_tag" autofocus>
+
+                            @if ($errors->has('evnt_charge_tag'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('evnt_charge_tag') }}</strong>
+                                </span>
+                            @endif
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" value="" id="hiddeneditid" name="id"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div> -->
+ <!-- edit prod modal
